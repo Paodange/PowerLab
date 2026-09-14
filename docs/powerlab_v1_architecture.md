@@ -8,7 +8,8 @@
 - `workflow_data_contracts.md`；
 - `runtime_api_contracts.md`；
 - `plugin_development_spec.md`；
-- `csharp_coding_standards.md`。
+- `csharp_coding_standards.md`；
+- `development_plan.md`（分阶段实施与验收任务）。
 
 所有项目可以面向 .NET 10，但手写和生成的 C# 源码统一限制为 C# 8.0 语法，并由根目录 `Directory.Build.props` 强制执行。
 
