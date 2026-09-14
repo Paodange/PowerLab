@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PowerLab.PluginSystem\PowerLab.PluginSystem.csproj" />
+    <ProjectReference Include="..\..\src\PowerLab.Domain\PowerLab.Domain.csproj" />
+    <ProjectReference Include="..\..\src\PowerLab.Plugin.Abstractions\PowerLab.Plugin.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
