@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- PowerLab targets modern .NET runtimes but intentionally limits source syntax to C# 8.0. -->
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+</Project>

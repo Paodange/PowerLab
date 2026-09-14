@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "1.0",
+  "workflowId": "f5415728-5115-451c-9dd3-80a068fe5153",
+  "name": "Temperature Control",
+  "description": "Read temperature until the target is reached.",
+  "inputs": [
+    {
+      "id": "989fc012-5d6b-483f-9e13-9a9264b00e0a",
+      "name": "TargetTemperature",
+      "displayName": "Target temperature",
+      "valueType": "number",
+      "required": true,
+      "description": "Target temperature for this run."
+    }
+  ],
+  "variables": [
+    {
+      "id": "5d66f27f-a447-43a3-bfd8-cd0290d230bb",
+      "name": "CurrentTemperature",
+      "displayName": "Current temperature",
+      "valueType": "number",
+      "initialValue": {
+        "kind": "literal",
+        "value": 0.0
+      }
+    },
+    {
+      "id": "var-attempt-count",
+      "name": "AttemptCount",
+      "displayName": "Attempt count",
+      "valueType": "integer",
+      "initialValue": {
+        "kind": "literal",
+        "value": 0
+      }
+    }
+  ],
+  "rootScope": {
+    "id": "scope-root",
+    "entryNodeId": "boundary-root-entry",
+    "exitNodeId": "boundary-root-exit",
+    "nodes": [
+      {
+        "kind": "while",
+        "id": "node-monitor-loop",
+        "displayName": "Monitor loop",
+        "condition": {
+          "kind": "expression",
+          "language": "powerExpression",
+          "languageVersion": 1,
+          "source": "Variables.AttemptCount < 100"
+        },
+        "bodyScope": {
+          "id": "scope-monitor-body",
+          "entryNodeId": "boundary-monitor-entry",
+          "exitNodeId": "boundary-monitor-exit",
+          "nodes": [
+            {
+              "kind": "action",
+              "id": "node-read-temperature",
+              "displayName": "Read temperature",
+              "nodeType": {
+                "pluginId": "com.vendor.thermometer",
+                "pluginVersion": "1.2.0",
+                "nodeTypeId": "read-temperature",
+                "nodeVersion": 1
+              },
+              "parameters": {},
+              "deviceBindings": {
+                "thermometer": "device-thermometer-a"
+              },
+              "outputMappings": {
+                "temperature": "5d66f27f-a447-43a3-bfd8-cd0290d230bb"
+              },
+              "layout": {
+                "x": 120.0,
+                "y": 80.0
+              }
+            },
+            {
+              "kind": "if",
+              "id": "node-target-reached",
+              "displayName": "Target reached?",
+              "condition": {
+                "kind": "expression",
+                "language": "powerExpression",
+                "languageVersion": 1,
+                "source": "Variables.CurrentTemperature >= Inputs.TargetTemperature"
+              },
+              "trueScope": {
+                "id": "scope-target-true",
+                "entryNodeId": "boundary-target-true-entry",
+                "exitNodeId": "boundary-target-true-exit",
+                "nodes": [
+                  {
+                    "kind": "break",
+                    "id": "node-break-monitor",
+                    "displayName": "Break",
+                    "layout": {
+                      "x": 120.0,
+                      "y": 80.0
+                    }
+                  }
+                ],
+                "edges": [
+                  {
+                    "id": "edge-target-true-entry-break",
+                    "source": {
+                      "nodeId": "boundary-target-true-entry",
+                      "portId": "out"
+                    },
+                    "target": {
+                      "nodeId": "node-break-monitor",
+                      "portId": "in"
+                    }
+                  }
+                ]
+              },
+              "falseScope": {
+                "id": "scope-target-false",
+                "entryNodeId": "boundary-target-false-entry",
+                "exitNodeId": "boundary-target-false-exit",
+                "nodes": [],
+                "edges": [
+                  {
+                    "id": "edge-target-false-empty",
+                    "source": {
+                      "nodeId": "boundary-target-false-entry",
+                      "portId": "out"
+                    },
+                    "target": {
+                      "nodeId": "boundary-target-false-exit",
+                      "portId": "in"
+                    }
+                  }
+                ]
+              },
+              "layout": {
+                "x": 120.0,
+                "y": 180.0
+              }
+            },
+            {
+              "kind": "setVariable",
+              "id": "node-increment-attempt",
+              "displayName": "Increment attempt",
+              "assignments": [
+                {
+                  "variableId": "var-attempt-count",
+                  "value": {
+                    "kind": "expression",
+                    "language": "powerExpression",
+                    "languageVersion": 1,
+                    "source": "Variables.AttemptCount + 1"
+                  }
+                }
+              ],
+              "layout": {
+                "x": 120.0,
+                "y": 280.0
+              }
+            }
+          ],
+          "edges": [
+            {
+              "id": "edge-monitor-entry-read",
+              "source": {
+                "nodeId": "boundary-monitor-entry",
+                "portId": "out"
+              },
+              "target": {
+                "nodeId": "node-read-temperature",
+                "portId": "in"
+              }
+            },
+            {
+              "id": "edge-read-if",
+              "source": {
+                "nodeId": "node-read-temperature",
+                "portId": "out"
+              },
+              "target": {
+                "nodeId": "node-target-reached",
+                "portId": "in"
+              }
+            },
+            {
+              "id": "edge-if-increment",
+              "source": {
+                "nodeId": "node-target-reached",
+                "portId": "out"
+              },
+              "target": {
+                "nodeId": "node-increment-attempt",
+                "portId": "in"
+              }
+            },
+            {
+              "id": "edge-increment-monitor-exit",
+              "source": {
+                "nodeId": "node-increment-attempt",
+                "portId": "out"
+              },
+              "target": {
+                "nodeId": "boundary-monitor-exit",
+                "portId": "in"
+              }
+            }
+          ]
+        },
+        "layout": {
+          "x": 120.0,
+          "y": 180.0
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-root-entry-loop",
+        "source": {
+          "nodeId": "boundary-root-entry",
+          "portId": "out"
+        },
+        "target": {
+          "nodeId": "node-monitor-loop",
+          "portId": "in"
+        }
+      },
+      {
+        "id": "edge-loop-root-exit",
+        "source": {
+          "nodeId": "node-monitor-loop",
+          "portId": "out"
+        },
+        "target": {
+          "nodeId": "boundary-root-exit",
+          "portId": "in"
+        }
+      }
+    ],
+    "layout": {
+      "entry": {
+        "x": 120.0,
+        "y": 40.0
+      },
+      "exit": {
+        "x": 120.0,
+        "y": 440.0
+      }
+    }
+  }
+}
+

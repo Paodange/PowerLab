@@ -3,6 +3,15 @@
 > 状态：讨论基线草案  
 > 本文记录 PowerLab 第一阶段已经确认的产品边界和运行语义。流程画布的基础方案参见 `workflow_designer_architecture.md`。
 
+具体数据契约参见：
+
+- `workflow_data_contracts.md`；
+- `runtime_api_contracts.md`；
+- `plugin_development_spec.md`；
+- `csharp_coding_standards.md`。
+
+所有项目可以面向 .NET 10，但手写和生成的 C# 源码统一限制为 C# 8.0 语法，并由根目录 `Directory.Build.props` 强制执行。
+
 ## 1. 产品目标
 
 PowerLab V1 是一套面向自动化行业的通用流程设计与执行平台，提供：
@@ -462,4 +471,3 @@ tests/
 - 3D 仿真通过独立 Simulation Adapter/Worker 扩展；
 - gRPC 仅在 RuntimeHost 与内部 Worker 之间确有高吞吐或双向流需求时引入；
 - 断电恢复必须建立设备动作幂等性和人工恢复协议后再实现。
-

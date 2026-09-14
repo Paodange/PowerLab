@@ -3,6 +3,10 @@
 > 状态：V1 设计草案  
 > 目标：让设备供应商和业务开发者以稳定、可发现、与 UI 解耦的方式提供设备驱动和流程节点。
 
+NodeDescriptor、ParameterSchema、Binding 和 Workflow JSON 的规范外形参见 `workflow_data_contracts.md`；运行状态与 REST DTO 参见 `runtime_api_contracts.md`。
+
+插件及 SDK 源码必须遵守 `csharp_coding_standards.md`，使用 C# 8.0 语法。插件项目不得提高 `LangVersion`。
+
 ## 1. 插件边界
 
 一个插件包可以提供以下一种或多种能力：
@@ -458,4 +462,3 @@ DeviceId
 - 不兼容 NodeVersion 检查。
 
 后续可以通过 `PowerLab.PluginSdk.Testing` 提供测试 Fixture 和插件验证命令。
-

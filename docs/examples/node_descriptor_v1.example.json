@@ -1,0 +1,160 @@
+{
+  "descriptorVersion": 1,
+  "nodeType": {
+    "pluginId": "com.vendor.robot",
+    "pluginVersion": "1.2.0",
+    "nodeTypeId": "move",
+    "nodeVersion": 1
+  },
+  "displayName": "Move robot",
+  "description": "Moves a robot to a coordinate or named position.",
+  "category": "Robot/Motion",
+  "icon": {
+    "kind": "pluginResource",
+    "resourcePath": "icons/move.svg",
+    "contentHash": "sha256:example"
+  },
+  "parameters": [
+    {
+      "id": "mode",
+      "name": "Mode",
+      "displayName": "Target mode",
+      "valueType": "string",
+      "required": true,
+      "defaultValue": {
+        "kind": "literal",
+        "value": "coordinate"
+      },
+      "allowedBindings": [
+        "literal"
+      ],
+      "constraints": {
+        "allowedValues": [
+          "coordinate",
+          "namedPosition"
+        ]
+      },
+      "editor": {
+        "kind": "select"
+      },
+      "group": "Target",
+      "order": 10
+    },
+    {
+      "id": "x",
+      "name": "X",
+      "displayName": "X",
+      "valueType": "number",
+      "required": true,
+      "defaultValue": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "allowedBindings": [
+        "literal",
+        "variable",
+        "expression"
+      ],
+      "applicableWhen": {
+        "language": "parameterCondition",
+        "languageVersion": 1,
+        "source": "Parameters.Mode == \"coordinate\""
+      },
+      "group": "Target",
+      "order": 20
+    },
+    {
+      "id": "y",
+      "name": "Y",
+      "displayName": "Y",
+      "valueType": "number",
+      "required": true,
+      "defaultValue": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "allowedBindings": [
+        "literal",
+        "variable",
+        "expression"
+      ],
+      "applicableWhen": {
+        "language": "parameterCondition",
+        "languageVersion": 1,
+        "source": "Parameters.Mode == \"coordinate\""
+      },
+      "group": "Target",
+      "order": 30
+    },
+    {
+      "id": "positionName",
+      "name": "PositionName",
+      "displayName": "Named position",
+      "valueType": "string",
+      "required": true,
+      "allowedBindings": [
+        "literal",
+        "variable",
+        "expression"
+      ],
+      "constraints": {
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "applicableWhen": {
+        "language": "parameterCondition",
+        "languageVersion": 1,
+        "source": "Parameters.Mode == \"namedPosition\""
+      },
+      "group": "Target",
+      "order": 40
+    },
+    {
+      "id": "speed",
+      "name": "Speed",
+      "displayName": "Speed",
+      "description": "Movement speed in percent.",
+      "valueType": "number",
+      "required": true,
+      "defaultValue": {
+        "kind": "literal",
+        "value": 50.0
+      },
+      "allowedBindings": [
+        "literal",
+        "variable",
+        "expression"
+      ],
+      "constraints": {
+        "minimum": 0.0,
+        "maximum": 100.0
+      },
+      "editor": {
+        "kind": "number",
+        "step": 1.0
+      },
+      "group": "Motion",
+      "order": 50
+    }
+  ],
+  "outputs": [
+    {
+      "id": "completed",
+      "name": "Completed",
+      "displayName": "Completed",
+      "valueType": "boolean",
+      "required": true
+    }
+  ],
+  "deviceSlots": [
+    {
+      "id": "robot",
+      "name": "Robot",
+      "displayName": "Robot",
+      "requiredDeviceTypeId": "com.vendor.robot/robot-v1",
+      "required": true
+    }
+  ],
+  "pauseMode": "nodeBoundary"
+}
+
