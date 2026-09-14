@@ -1,0 +1,5 @@
+<Project>
+  <Target Name="ValidatePowerLabLanguageVersion" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(LangVersion)' != '8.0'" Text="PowerLab requires LangVersion=8.0. Project '$(MSBuildProjectFullPath)' declares '$(LangVersion)'." />
+  </Target>
+</Project>

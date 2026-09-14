@@ -1,1 +1,42 @@
 /.vs
+
+# Build outputs
+**/[Bb]in/
+**/[Oo]bj/
+
+# Test results and coverage output
+**/[Tt]est[Rr]esults/
+*.trx
+*.coverage
+coverage/
+
+# Local SQLite databases
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-journal
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3-journal
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Runtime-local data and embedded Python
+/data/
+src/PowerLab.RuntimeHost/data/
+**/.python-runtime/
+**/python-runtime/
+**/embedded-python/
+**/__pycache__/
+*.py[cod]
+
+# IDE-local files
+/.vscode/
+/.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

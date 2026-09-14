@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PowerLab.Designer.Core\PowerLab.Designer.Core.csproj" />
+    <ProjectReference Include="..\PowerLab.Api.Client\PowerLab.Api.Client.csproj" />
+  </ItemGroup>
+
+</Project>

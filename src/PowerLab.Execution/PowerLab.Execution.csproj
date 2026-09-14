@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PowerLab.Domain\PowerLab.Domain.csproj" />
+    <ProjectReference Include="..\PowerLab.Plugin.Abstractions\PowerLab.Plugin.Abstractions.csproj" />
+    <ProjectReference Include="..\PowerLab.Expressions\PowerLab.Expressions.csproj" />
+    <ProjectReference Include="..\PowerLab.Devices\PowerLab.Devices.csproj" />
+  </ItemGroup>
+
+</Project>

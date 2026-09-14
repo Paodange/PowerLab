@@ -1,2 +1,30 @@
 <Solution>
+  <Folder Name="/plugins/">
+    <Project Path="plugins/PowerLab.BuiltInNodes/PowerLab.BuiltInNodes.csproj" />
+    <Project Path="plugins/PowerLab.SamplePlugin/PowerLab.SamplePlugin.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/PowerLab.Api.Client/PowerLab.Api.Client.csproj" />
+    <Project Path="src/PowerLab.Api.Contracts/PowerLab.Api.Contracts.csproj" />
+    <Project Path="src/PowerLab.Designer.Core/PowerLab.Designer.Core.csproj" />
+    <Project Path="src/PowerLab.Designer.Wpf/PowerLab.Designer.Wpf.csproj" />
+    <Project Path="src/PowerLab.Devices/PowerLab.Devices.csproj" />
+    <Project Path="src/PowerLab.Domain/PowerLab.Domain.csproj" />
+    <Project Path="src/PowerLab.Execution/PowerLab.Execution.csproj" />
+    <Project Path="src/PowerLab.Expressions/PowerLab.Expressions.csproj" />
+    <Project Path="src/PowerLab.Persistence/PowerLab.Persistence.csproj" />
+    <Project Path="src/PowerLab.Plugin.Abstractions/PowerLab.Plugin.Abstractions.csproj" />
+    <Project Path="src/PowerLab.PluginSystem/PowerLab.PluginSystem.csproj" />
+    <Project Path="src/PowerLab.Python/PowerLab.Python.csproj" />
+    <Project Path="src/PowerLab.RuntimeHost/PowerLab.RuntimeHost.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PowerLab.Devices.Tests/PowerLab.Devices.Tests.csproj" />
+    <Project Path="tests/PowerLab.Domain.Tests/PowerLab.Domain.Tests.csproj" />
+    <Project Path="tests/PowerLab.Execution.Tests/PowerLab.Execution.Tests.csproj" />
+    <Project Path="tests/PowerLab.Expressions.Tests/PowerLab.Expressions.Tests.csproj" />
+    <Project Path="tests/PowerLab.IntegrationTests/PowerLab.IntegrationTests.csproj" />
+    <Project Path="tests/PowerLab.Persistence.Tests/PowerLab.Persistence.Tests.csproj" />
+    <Project Path="tests/PowerLab.PluginSystem.Tests/PowerLab.PluginSystem.Tests.csproj" />
+  </Folder>
 </Solution>
