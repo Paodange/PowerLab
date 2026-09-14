@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\PowerLab.Api.Contracts\PowerLab.Api.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\PowerLab.Domain\PowerLab.Domain.csproj" />
     <ProjectReference Include="..\..\src\PowerLab.RuntimeHost\PowerLab.RuntimeHost.csproj" />
   </ItemGroup>
 
